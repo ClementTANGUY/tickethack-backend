@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const tripSchema = new mongoose.Schema({
     departure: "String",
     arrival: "String",
-    date: { type: mongoose.Schema.Types.ObjectId, ref: 'dates' },
+    date: Date,
     price: Number,
 })
 
