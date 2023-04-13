@@ -5,16 +5,17 @@ var router = express.Router();
 const Cart = require('../models/carts');
 const Trip = require('../models/trips');
 
-router.post("/:id", (req, res) => {
-  Trip.findById(req.params.id)
+router.post("/", (req, res) => {
+  Trip.findById(req.body.tripId)
   .then(data => {
     if (data) {
-      const newCart = new Cart(
-      {
-			  trip: data.trip,
+      const newCart = new Cart({
+			  trip: data.trip
 			});
-      console.log(newCart);
-      res.json({ result: true, trip: data });
+      newCart.save()
+      .then(newDoc => {
+				res.json({ result: true, trip: newDoc });
+			});
     } else {
       res.json({ result: false, error: "Trip not found" });
     }
