@@ -10,7 +10,7 @@ router.post("/", (req, res) => {
   .then(data => {
     if (data) {
       const newCart = new Cart({
-			  trip: data.trip
+			  trip: data.trips[0].id,
 			});
       newCart.save()
       .then(newDoc => {
@@ -19,6 +19,12 @@ router.post("/", (req, res) => {
     } else {
       res.json({ result: false, error: "Trip not found" });
     }
+  });
+});
+
+router.get("/", (req, res) => {
+  Cart.find().then(data => {
+		res.json({ result: true, carts: data });
   });
 });
 
