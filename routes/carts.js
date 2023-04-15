@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
- moment = require('moment');
-// import trips model
+moment = require('moment');
+
+// import model
 const Cart = require('../models/carts');
 const Trip = require('../models/trips');
 
@@ -17,7 +18,7 @@ router.post("/", (req, res) => {
 			});
       newCart.save()
       .then(newDoc => {
-				res.json({ result: true, trip: newDoc });
+				res.json({ result: true, cart: newDoc });
 			});
     } else {
       res.json({ result: false, error: "Trip not found" });

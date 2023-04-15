@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
- moment = require('moment');
+moment = require('moment');
 
-// import trips & carts models
+// import models
 const Trip = require('../models/trips');
 const Cart = require('../models/carts');
 
@@ -29,7 +29,6 @@ router.get('/', (req, res) => {
 		res.json({ trips: data });
 	});
 });
-
 
 
 module.exports = router;
