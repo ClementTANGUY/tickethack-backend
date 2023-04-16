@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const bookingSchema = new mongoose.Schema({
-    carts: [{ type: mongoose.Schema.Types.ObjectId, ref: "carts" }],
+    trips: [{ type: mongoose.Schema.Types.ObjectId, ref: "trips" }],
 })
 
 const Booking = mongoose.model('bookings', bookingSchema);

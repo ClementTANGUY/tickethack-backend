@@ -26,9 +26,10 @@ router.post("/", (req, res) => {
   });
 });
 
-// Get all the trips registed in the cart
+// Get the trips registed for each cart
 router.get("/", (req, res) => {
   Cart.find()
+  // Display the trip details in a cart
   .populate('trip')
   .then(data => {
 		res.json({ result: true, cart: data });
